@@ -1,10 +1,9 @@
 import React from "react";
 
-function TodoItem({itemOne}) {
+function TodoItem({taskName}) {
   return (
     <div className="TodoItems">
-      <li>{itemOne}</li>
-      <li>Exercise daily</li>
+      <li>{taskName}</li>
     </div>
   );
 }
