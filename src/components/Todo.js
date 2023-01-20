@@ -3,9 +3,16 @@ import TodoItem from "./TodoItem";
 
 function Todo() {
   const [todoItems, setTodoItems] = useState([
-    { taskName: "Sleep well" },
-    { taskName: "Drink water" },
+    { id: 1, taskName: "Sleep well" },
+    { id: 2, taskName: "Drink water" },
   ]);
+
+  function deleteFunc(idToDelete){
+    const newState = todoItems.filter(({id})=>{
+       return id!==idToDelete;
+    })
+    setTodoItems(newState);
+  }
   return (
     <div>
       <h1>TodoList</h1>
@@ -13,11 +20,10 @@ function Todo() {
       <button type="submit">Add</button>
       <br></br>
       <div>
-        {todoItems.map(({taskName})=>{
-            return <TodoItem taskName={taskName}/>
+        {todoItems.map(({ id,taskName }) => {
+          return <TodoItem id={id} taskName={taskName} deleteFunc={deleteFunc}/>;
         })}
       </div>
-
     </div>
   );
 }
