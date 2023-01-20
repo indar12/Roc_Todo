@@ -1,7 +1,9 @@
 import React, { useState } from "react";
+import TodoInput from "./TodoInput";
 import TodoItem from "./TodoItem";
 
 function Todo() {
+    const [todoInput, setTodoInput] = useState({})
   const [todoItems, setTodoItems] = useState([
     { id: 1, taskName: "Sleep well" },
     { id: 2, taskName: "Drink water" },
@@ -24,14 +26,17 @@ function Todo() {
     })
     setTodoItems(newState);
   }
+  function addTask(){
+    if(todoInput!=="")
+     setTodoItems([...todoItems,todoInput]);
+  }
   return (
     <div>
-      <h1>TodoList</h1>
-      <input type="text" placeholder="Enter the task" />
-      <button type="submit">Add</button>
-      <br></br>
+      <TodoInput setTodoInput={setTodoInput} addTask={addTask}/>
       <div>
         {todoItems.map(({ id,taskName }) => {
+            console.log("id",id);
+            console.log("taskname",taskName);
           return <TodoItem id={id} taskName={taskName} deleteFunc={deleteFunc} editFunc={editFunc}/>;
         })}
       </div>
