@@ -13,6 +13,17 @@ function Todo() {
     })
     setTodoItems(newState);
   }
+  function editFunc(idToEdit,editedText){
+    console.log("id",idToEdit);
+    const newState = todoItems.map((todoItem)=>{
+       if(todoItem.id===idToEdit)
+       {
+        return { ...todoItem,taskName: editedText}
+       }
+       return todoItem;
+    })
+    setTodoItems(newState);
+  }
   return (
     <div>
       <h1>TodoList</h1>
@@ -21,7 +32,7 @@ function Todo() {
       <br></br>
       <div>
         {todoItems.map(({ id,taskName }) => {
-          return <TodoItem id={id} taskName={taskName} deleteFunc={deleteFunc}/>;
+          return <TodoItem id={id} taskName={taskName} deleteFunc={deleteFunc} editFunc={editFunc}/>;
         })}
       </div>
     </div>

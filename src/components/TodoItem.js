@@ -1,6 +1,6 @@
 import React from "react";
 
-function TodoItem({ id, taskName, deleteFunc}) {
+function TodoItem({ id, taskName, deleteFunc, editFunc }) {
   return (
     <div className="TodoItems">
       <li>
@@ -12,6 +12,13 @@ function TodoItem({ id, taskName, deleteFunc}) {
           }}
         >
           delete
+        </button>
+        <button
+          onClick={() => {
+            editFunc(id, "edittext");
+          }}
+        >
+          Edit
         </button>
       </li>
     </div>
