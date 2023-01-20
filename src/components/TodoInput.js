@@ -4,6 +4,7 @@ function TodoInput( {setTodoInput, addTask}) {
   const onSubmit = (e) => {
     e.preventDefault();
     addTask();
+    setTodoInput({})
   };
   return (
     <div>
@@ -12,7 +13,7 @@ function TodoInput( {setTodoInput, addTask}) {
           type="text"
           placeholder="Enter the task"
           onChange={(e) => {
-            setTodoInput({ id: 3, taskName: e.target.value });
+            setTodoInput({ id: Math.floor(Math.random()*100), taskName: e.target.value });
           }}
         />
         <button type="submit" onClick={onSubmit}>Add</button>
